@@ -106,6 +106,7 @@ export default function BookingScreen (): JSX.Element {
           </form>
         </div>
       </main>
+    <Footer />
     </div>
   );
 }
