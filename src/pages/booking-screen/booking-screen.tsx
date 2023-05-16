@@ -92,15 +92,20 @@ export default function BookingScreen (): JSX.Element {
             </fieldset>
             <button className="btn btn--accent btn--cta booking-form__submit" type="submit">Забронировать</button>
             <label className="custom-checkbox booking-form__checkbox booking-form__checkbox--agreement">
-              <input type="checkbox" id="id-order-agreement" name="user-agreement" required /><span class="custom-checkbox__icon">
+              <input type="checkbox" id="id-order-agreement" name="user-agreement" required />
+              <span className="custom-checkbox__icon">
                 <svg width="20" height="17" aria-hidden="true">
-                  <use xlinHref="#icon-tick"></use>
-                </svg></span><span className="custom-checkbox__label">Я&nbsp;согласен с
-                <a className="link link--active-silver link--underlined" href="#">правилами обработки персональных данных</a>&nbsp;и пользовательским соглашением</span>
+                  <use xlinkHref="#icon-tick"></use>
+                </svg>
+              </span>
+              <span className="custom-checkbox__label">Я&nbsp;согласен с
+                <a className="link link--active-silver link--underlined" href="#">правилами обработки персональных данных
+                </a>&nbsp;и пользовательским соглашением
+              </span>
             </label>
           </form>
         </div>
       </main>
-    <div>
+    </div>
   );
 }
