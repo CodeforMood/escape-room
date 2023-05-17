@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Footer from '../../components/footer/footer';
 import Header from '../../components/header/header';
 
@@ -102,8 +103,8 @@ export default function BookingScreen (): JSX.Element {
                 </svg>
               </span>
               <span className="custom-checkbox__label">Я&nbsp;согласен с
-                <a className="link link--active-silver link--underlined" href="#">правилами обработки персональных данных
-                </a>&nbsp;и пользовательским соглашением
+                <Link className="link link--active-silver link--underlined" to="#">правилами обработки персональных данных
+                </Link>&nbsp;и пользовательским соглашением
               </span>
             </label>
           </form>
