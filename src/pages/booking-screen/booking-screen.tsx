@@ -1,3 +1,6 @@
+import Footer from '../../components/footer/footer';
+import Header from '../../components/header/header';
+
 export default function BookingScreen (): JSX.Element {
   return (
     <div className="wrapper">
@@ -106,7 +109,7 @@ export default function BookingScreen (): JSX.Element {
           </form>
         </div>
       </main>
-    <Footer />
+      <Footer />
     </div>
   );
 }
