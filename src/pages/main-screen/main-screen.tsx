@@ -1,8 +1,11 @@
 import FilterForm from '../../components/filter-form/filter-form';
 import Footer from '../../components/footer/footer';
 import Header from '../../components/header/header';
+import QuestList from '../../components/quest-list/quest-list';
+import { useAppSelector } from '../../hooks';
 
 export default function MainScreen (): JSX.Element {
+  const questsData = useAppSelector(getQuestsData)
   return (
     <div className="wrapper">
       <Header />
@@ -17,9 +20,7 @@ export default function MainScreen (): JSX.Element {
             <FilterForm />
           </div>
           <h2 className="title visually-hidden">Выберите квест</h2>
-          <div className="cards-grid">
-
-          </div>
+          <QuestList questsData={questsData}/>
         </div>
       </main>
       <Footer />

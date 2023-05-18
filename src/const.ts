@@ -13,3 +13,18 @@ export enum AuthorizationStatus {
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
 }
+
+export enum APIRoute {
+  JustSlash = '/',
+  Quest = '/quest/',
+  Login = '/login',
+  Logout = '/logout',
+  Booking = '/booking',
+  Reservation = '/reservation'
+}
+
+export enum SlicesName {
+  User = 'USER',
+  QuestsData = 'QUESTS_DATA',
+  CurrentQuestData = 'CURRENT_QUEST_DATA',
+}

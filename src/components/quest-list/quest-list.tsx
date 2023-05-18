@@ -9,7 +9,7 @@ export default function QuestList({questsData}: QuestListProps): JSX.Element {
   
   return (
     <div className="cards-grid">
-      {questsData.map((questData) => <QuestCard questData={questData} />)}
+      {questsData.map((questData) => <QuestCard questData={questData} key={questData.id} />)}
     </div>
   );
 }
