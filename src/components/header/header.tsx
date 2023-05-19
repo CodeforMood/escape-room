@@ -1,7 +1,16 @@
 import { Link } from 'react-router-dom';
-import { AppRoute } from '../../const';
+import { AppRoute, AuthorizationStatus } from '../../const';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { logoutAction } from '../../store/api-actions';
+import { getAuthorizationStatus } from '../../store/authoriztion-user-process/selectors';
 
-export default function Header(): JSX.Element {
+type HeaderProps = {
+  isLoginScreen?: boolean;
+}
+
+export default function Header({isLoginScreen}: HeaderProps): JSX.Element {
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
+  const dispatch = useAppDispatch();
   return (
     <header className="header">
       <div className="container container--size-l">
@@ -24,7 +33,8 @@ export default function Header(): JSX.Element {
           </ul>
         </nav>
         <div className="header__side-nav">
-          <Link className="btn btn--accent header__side-item" to="#">Выйти</Link>
+          {authorizationStatus === AuthorizationStatus.Auth && !isLoginScreen && <Link className="btn btn--accent header__side-item" to="#" onClick={()=> {dispatch(logoutAction());}}>Выйти</Link>}
+          {authorizationStatus !== AuthorizationStatus.Auth && !isLoginScreen && <Link className="btn header__side-item header__login-btn" to={AppRoute.Login}>Войти</Link>}
           <Link className="link header__side-item header__phone-link" to="#">8 (000) 111-11-11</Link>
         </div>
       </div>

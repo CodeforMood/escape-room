@@ -16,8 +16,8 @@ export const questsData = createSlice({
   initialState,
   reducers: {
     filterQuests: (state) => {
-      state.filteredQuests = state.quests.filter((quest)=> quest.type === state.currentTypeFilter).
-      filter((quest)=> quest.level === state.currentLevelFilter);
+      state.filteredQuests = state.quests.filter((quest)=> quest.type === state.currentTypeFilter)
+        .filter((quest)=> quest.level === state.currentLevelFilter);
     },
     setLevelFilter: (state, action: PayloadAction<string>) => {
       state.currentLevelFilter = action.payload;
@@ -34,7 +34,7 @@ export const questsData = createSlice({
       .addCase(fetchQuestsAction.fulfilled, (state, action) => {
         state.quests = action.payload;
         state.isQuestsDataLoading = false;
-      })
+      });
   }
 });
 

@@ -1,4 +1,4 @@
-import { Quest } from "./quest";
+import { Quest } from './quest';
 
 export interface QuestInfo extends Quest {
   description: string;

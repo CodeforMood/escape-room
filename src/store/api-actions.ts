@@ -1,13 +1,13 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { AxiosInstance } from "axios";
-import { APIRoute, AppRoute } from "../const";
-import { dropToken, saveToken } from "../services/token";
-import { AuthData } from "../types/auth-data";
-import { Quest } from "../types/quest";
-import { QuestInfo } from "../types/quest-info";
-import { AppDispatch } from "../types/state";
-import { UserData } from "../types/user-data";
-import { redirectToRoute } from "./action";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { AxiosInstance } from 'axios';
+import { APIRoute, AppRoute } from '../const';
+import { dropToken, saveToken } from '../services/token';
+import { AuthData } from '../types/auth-data';
+import { Quest } from '../types/quest';
+import { QuestInfo } from '../types/quest-info';
+import { AppDispatch } from '../types/state';
+import { UserData } from '../types/user-data';
+import { redirectToRoute } from './action';
 
 export const checkAuthAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
@@ -19,7 +19,7 @@ export const checkAuthAction = createAsyncThunk<void, undefined, {
   },
 );
 
-export const loginAction = createAsyncThunk<string, AuthData, {
+export const loginAction = createAsyncThunk<void, AuthData, {
   dispatch: AppDispatch;
   extra: AxiosInstance;
 }>(
@@ -28,8 +28,6 @@ export const loginAction = createAsyncThunk<string, AuthData, {
     const {data} = await api.post<UserData>(APIRoute.Login, {email, password});
     saveToken(data.token);
     dispatch(redirectToRoute(AppRoute.Root));
-
-    return data.email;
   },
 );
 

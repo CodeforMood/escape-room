@@ -26,7 +26,7 @@ export const createAPI = (): AxiosInstance => {
   api.interceptors.response.use(
     (response) => response,
     (error: AxiosError<{error: string}>) => {
-      if (error.response && error.response.status !== 401) {
+      if (error.response) {
         toast.warn(error.response.data.error);
       }
 

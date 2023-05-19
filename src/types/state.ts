@@ -1,5 +1,5 @@
-import { store } from "../store";
-import { Quest } from "./quest";
+import { store } from '../store';
+import { Quest } from './quest';
 
 export type AuthorizationUserProcess = {
   authorizationStatus: string;
