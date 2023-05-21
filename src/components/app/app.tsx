@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { browserHistory } from '../../browser-history';
 import { AppRoute } from '../../const';
+import BookingScreen from '../../pages/booking-screen/booking-screen';
 import ContactsScreen from '../../pages/contacts-screen/contacts-screen';
 import LoginScreen from '../../pages/login-screen/login-screen';
 import MainScreen from '../../pages/main-screen/main-screen';
@@ -38,6 +39,10 @@ function App(): JSX.Element {
         <Route
           path='*'
           element={<NotFoundScreen />}
+        />
+        <Route
+          path={AppRoute.Booking}
+          element = {<BookingScreen />}
         />
         <Route
           path={AppRoute.Contacts}

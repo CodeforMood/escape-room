@@ -3,8 +3,8 @@ import { AxiosInstance } from 'axios';
 import { APIRoute, AppRoute } from '../const';
 import { dropToken, saveToken } from '../services/token';
 import { AuthData } from '../types/auth-data';
+import { CurrentQuest } from '../types/current-quest';
 import { Quest } from '../types/quest';
-import { QuestInfo } from '../types/quest-info';
 import { AppDispatch } from '../types/state';
 import { UserData } from '../types/user-data';
 import { redirectToRoute } from './action';
@@ -41,12 +41,12 @@ export const logoutAction = createAsyncThunk<void, undefined, {
   },
 );
 
-export const fetchQuestInfoAction = createAsyncThunk<QuestInfo, string, {
+export const fetchCurrentQuestDataAction = createAsyncThunk<CurrentQuest, string, {
   extra: AxiosInstance;
 }>(
-  'fetchQuestInfo',
+  'fetchCurrentQuestData',
   async(id, {extra: api}) => {
-    const {data} = await api.get<QuestInfo>(APIRoute.Quest + id);
+    const {data} = await api.get<CurrentQuest>(APIRoute.Quest + id);
 
     return data;
   },

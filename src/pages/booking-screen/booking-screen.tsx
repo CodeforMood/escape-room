@@ -33,19 +33,19 @@ export default function BookingScreen (): JSX.Element {
                 <legend className="booking-form__date-title">Сегодня</legend>
                 <div className="booking-form__date-inner-wrapper">
                   <label className="custom-radio booking-form__date">
-                    <input type="radio" id="today9h45m" name="date" required value="today9h45m" /><span className="custom-radio__label">9:45</span>
+                    <input type="radio" id="today9h45m" name="date" required value="today 9:45m" /><span className="custom-radio__label">9:45</span>
                   </label>
                   <label className="custom-radio booking-form__date">
-                    <input type="radio" id="today15h00m" name="date" checked required value="today15h00m" /><span className="custom-radio__label">15:00</span>
+                    <input type="radio" id="today15h00m" name="date" required value="today 15:00" /><span className="custom-radio__label">15:00</span>
                   </label>
                   <label className="custom-radio booking-form__date">
-                    <input type="radio" id="today17h30m" name="date" required value="today17h30m" /><span className="custom-radio__label">17:30</span>
+                    <input type="radio" id="today17h30m" name="date" required value="today 17:30" /><span className="custom-radio__label">17:30</span>
                   </label>
                   <label className="custom-radio booking-form__date">
-                    <input type="radio" id="today19h30m" name="date" required value="today19h30m" disabled /><span className="custom-radio__label">19:30</span>
+                    <input type="radio" id="today19h30m" name="date" required value="today 19:30" disabled /><span className="custom-radio__label">19:30</span>
                   </label>
                   <label className="custom-radio booking-form__date">
-                    <input type="radio" id="today21h30m" name="date" required value="today21h30m" /><span className="custom-radio__label">21:30</span>
+                    <input type="radio" id="today21h30m" name="date" required value="today 21:30" /><span className="custom-radio__label">21:30</span>
                   </label>
                 </div>
               </fieldset>
@@ -53,19 +53,19 @@ export default function BookingScreen (): JSX.Element {
                 <legend className="booking-form__date-title">Завтра</legend>
                 <div className="booking-form__date-inner-wrapper">
                   <label className="custom-radio booking-form__date">
-                    <input type="radio" id="tomorrow11h00m" name="date" required value="tomorrow11h00m" /><span className="custom-radio__label">11:00</span>
+                    <input type="radio" id="tomorrow11h00m" name="date" required value="tomorrow 11:00" /><span className="custom-radio__label">11:00</span>
                   </label>
                   <label className="custom-radio booking-form__date">
-                    <input type="radio" id="tomorrow15h00m" name="date" required value="tomorrow15h00m" disabled /><span className="custom-radio__label">15:00</span>
+                    <input type="radio" id="tomorrow15h00m" name="date" required value="tomorrow 15:00" disabled /><span className="custom-radio__label">15:00</span>
                   </label>
                   <label className="custom-radio booking-form__date">
-                    <input type="radio" id="tomorrow17h30m" name="date" required value="tomorrow17h30m" disabled /><span className="custom-radio__label">17:30</span>
+                    <input type="radio" id="tomorrow17h30m" name="date" required value="tomorrow 17:30" disabled /><span className="custom-radio__label">17:30</span>
                   </label>
                   <label className="custom-radio booking-form__date">
-                    <input type="radio" id="tomorrow19h45m" name="date" required value="tomorrow19h45m" /><span className="custom-radio__label">19:45</span>
+                    <input type="radio" id="tomorrow19h45m" name="date" required value="tomorrow 19:45" /><span className="custom-radio__label">19:45</span>
                   </label>
                   <label className="custom-radio booking-form__date">
-                    <input type="radio" id="tomorrow21h30m" name="date" required value="tomorrow21h30m" /><span className="custom-radio__label">21:30</span>
+                    <input type="radio" id="tomorrow21h30m" name="date" required value="tomorrow 21:30" /><span className="custom-radio__label">21:30</span>
                   </label>
                 </div>
               </fieldset>

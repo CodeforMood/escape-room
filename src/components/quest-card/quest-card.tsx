@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
 import { useAppDispatch } from '../../hooks';
-import { fetchQuestInfoAction } from '../../store/api-actions';
+import { fetchCurrentQuestDataAction } from '../../store/api-actions';
 import { Quest } from '../../types/quest';
 
 type QuestCardProps = {
@@ -19,7 +20,7 @@ export default function QuestCard({questData}: QuestCardProps): JSX.Element {
         </picture>
       </div>
       <div className="quest-card__content">
-        <div className="quest-card__info-wrapper"><Link className="quest-card__link" onClick={() => {dispatch(fetchQuestInfoAction(id));}} to="#">{title}</Link>
+        <div className="quest-card__info-wrapper"><Link className="quest-card__link" onClick={() => {dispatch(fetchCurrentQuestDataAction(id));}} to={`${AppRoute.Quest}/${id}`}>{title}</Link>
         </div>
         <ul className="tags quest-card__tags">
           <li className="tags__item">

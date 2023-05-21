@@ -1,6 +1,6 @@
 import { Quest } from './quest';
 
-export interface QuestInfo extends Quest {
+export type CurrentQuest = Quest & {
   description: string;
   coverImg: string;
   coverImgWebp: string;

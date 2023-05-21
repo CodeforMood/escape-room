@@ -27,9 +27,12 @@ export default function Header({isLoginScreen}: HeaderProps): JSX.Element {
             <li className="main-nav__item">
               <Link className="link" to={AppRoute.Contacts}>Контакты</Link>
             </li>
-            <li className="main-nav__item">
-              <Link className="link" to={AppRoute.MyQuests}>Мои бронирования</Link>
-            </li>
+            {
+              authorizationStatus === AuthorizationStatus.Auth &&
+              <li className="main-nav__item">
+                <Link className="link" to={AppRoute.MyQuests}>Мои бронирования</Link>
+              </li>
+            }
           </ul>
         </nav>
         <div className="header__side-nav">
