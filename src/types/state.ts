@@ -1,4 +1,5 @@
 import { store } from '../store';
+import { BookingQuestData } from './booking-quest-data';
 import { CurrentQuest } from './current-quest';
 import { Quest } from './quest';
 
@@ -17,6 +18,11 @@ export type QuestsData = {
 export type CurrentQuestData = {
   quest: CurrentQuest | null;
   isQuestDataLoading: boolean;
+}
+
+export type BookingData = {
+  questBookingData: BookingQuestData | null;
+  isBookingQuestDataLoading: boolean;
 }
 
 export type State = ReturnType<typeof store.getState>;

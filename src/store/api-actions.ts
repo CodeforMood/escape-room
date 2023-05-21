@@ -3,6 +3,7 @@ import { AxiosInstance } from 'axios';
 import { APIRoute, AppRoute } from '../const';
 import { dropToken, saveToken } from '../services/token';
 import { AuthData } from '../types/auth-data';
+import { BookingQuestData } from '../types/booking-quest-data';
 import { CurrentQuest } from '../types/current-quest';
 import { Quest } from '../types/quest';
 import { AppDispatch } from '../types/state';
@@ -47,6 +48,17 @@ export const fetchCurrentQuestDataAction = createAsyncThunk<CurrentQuest, string
   'fetchCurrentQuestData',
   async(id, {extra: api}) => {
     const {data} = await api.get<CurrentQuest>(APIRoute.Quest + id);
+
+    return data;
+  },
+);
+
+export const fetchBookingQuestDataAction = createAsyncThunk<BookingQuestData, string, {
+  extra: AxiosInstance;
+}>(
+  'fetchBookingQuestData',
+  async(id, {extra: api}) => {
+    const {data} = await api.get<BookingQuestData>(APIRoute.Quest + id +APIRoute.JustSlash + APIRoute.Booking);
 
     return data;
   },
