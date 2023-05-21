@@ -1,23 +1,32 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { SlicesName } from '../../const';
+import { BookingData } from '../../types/state';
+import { fetchBookingQuestDataAction } from '../api-actions';
 
 const initialState: BookingData = {
-  quest: null,
-  isQuestDataLoading: false,
+  bookingQuestData: [],
+  isBookingQuestDataLoading: false,
+  currentBookingQuestId: null,
 };
 
 export const bookingQuestData = createSlice({
-  name: SlicesName.CurrentQuestData,
+  name: SlicesName.BookingQuestData,
   initialState,
-  reducers: {},
+  reducers: {
+    setCurrentBookingQuestId: (state, action: PayloadAction<string | null>) => {
+      state.currentBookingQuestId = action.payload;
+    },
+  },
   extraReducers (builder) {
     builder
-      .addCase(fetchCurrentQuestDataAction.pending, (state) => {
-        state.isQuestDataLoading = true;
+      .addCase(fetchBookingQuestDataAction.pending, (state) => {
+        state.isBookingQuestDataLoading = true;
       })
-      .addCase(fetchCurrentQuestDataAction.fulfilled, (state, action) => {
-        state.quest = action.payload;
-        state.isQuestDataLoading = false;
+      .addCase(fetchBookingQuestDataAction.fulfilled, (state, action) => {
+        state.bookingQuestData = action.payload;
+        state.isBookingQuestDataLoading = false;
       });
   }
 });
+
+export const {setCurrentBookingQuestId} = bookingQuestData.actions;

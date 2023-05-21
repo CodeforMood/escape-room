@@ -1,17 +1,17 @@
-export type BookingQuestData = [{
-  id: string
+export type BookingQuestData = {
+  id: string;
   location: {
-  address: string
-  coords: [number]
-}
+  address: string;
+  coords: [number, number];
+};
   slots: {
     today: [{
-      time: string
-      isAvailable: boolean
-    }]
+      time: string;
+      isAvailable: boolean;
+    }];
     tomorrow: [{
-      time: string
-      isAvailable: boolean
-    }]
-  }
-}]
+      time: string;
+      isAvailable: boolean;
+    }];
+  };
+}

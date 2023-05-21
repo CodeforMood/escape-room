@@ -21,8 +21,9 @@ export type CurrentQuestData = {
 }
 
 export type BookingData = {
-  questBookingData: BookingQuestData | null;
+  bookingQuestData: BookingQuestData[];
   isBookingQuestDataLoading: boolean;
+  currentBookingQuestId: string | null,
 }
 
 export type State = ReturnType<typeof store.getState>;

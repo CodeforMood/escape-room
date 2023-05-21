@@ -2,16 +2,18 @@ import { Link } from 'react-router-dom';
 import Footer from '../../components/footer/footer';
 import Header from '../../components/header/header';
 import { AppRoute } from '../../const';
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { fetchBookingQuestDataAction } from '../../store/api-actions';
 import { getCurrentQuestData, getQuestDataLoadingStatus } from '../../store/current-quest-data/selectors';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
 
 export default function QuestScreen (): JSX.Element {
   const questData = useAppSelector(getCurrentQuestData);
   const isQuestDataLoadingStatus = useAppSelector(getQuestDataLoadingStatus);
+  const dispatch = useAppDispatch();
 
   if(questData && !isQuestDataLoadingStatus) {
-    const {previewImg, previewImgWebp, description, title, coverImg, coverImgWebp, type, peopleMinMax, level} = questData;
+    const {previewImg, previewImgWebp, description, title, coverImg, coverImgWebp, type, peopleMinMax, level, id} = questData;
     return (
       <div className="wrapper">
         <Header />
@@ -39,7 +41,7 @@ export default function QuestScreen (): JSX.Element {
                 </li>
               </ul>
               <p className="quest-page__description">{description}</p>
-              <Link className="btn btn--accent btn--cta quest-page__btn" to={AppRoute.Booking}>Забронировать</Link>
+              <Link className="btn btn--accent btn--cta quest-page__btn" onClick={() => {dispatch(fetchBookingQuestDataAction(id));}} to={AppRoute.Booking}>Забронировать</Link>
             </div>
           </div>
         </main>
