@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { logoutAction } from '../../store/api-actions';
+import { fetchMyQuestsAction, logoutAction } from '../../store/api-actions';
 import { getAuthorizationStatus } from '../../store/authoriztion-user-process/selectors';
 
 type HeaderProps = {
@@ -11,6 +11,7 @@ type HeaderProps = {
 export default function Header({isLoginScreen}: HeaderProps): JSX.Element {
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
   const dispatch = useAppDispatch();
+
   return (
     <header className="header">
       <div className="container container--size-l">
@@ -30,7 +31,7 @@ export default function Header({isLoginScreen}: HeaderProps): JSX.Element {
             {
               authorizationStatus === AuthorizationStatus.Auth &&
               <li className="main-nav__item">
-                <Link className="link" to={AppRoute.MyQuests}>Мои бронирования</Link>
+                <Link className="link" onClick={() => {dispatch(fetchMyQuestsAction());}} to={AppRoute.MyQuests}>Мои бронирования</Link>
               </li>
             }
           </ul>

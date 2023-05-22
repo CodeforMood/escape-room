@@ -5,7 +5,7 @@ import { useAppSelector } from '../../hooks';
 import { getMyQuestsData } from '../../store/my-quests-data/selectors';
 
 export default function MyQuestsScreen (): JSX.Element {
-  const myQuestsData = useAppSelector(getMyQuestsData)
+  const myQuestsData = useAppSelector(getMyQuestsData);
   return (
     <div className="wrapper">
       <Header />
@@ -19,7 +19,7 @@ export default function MyQuestsScreen (): JSX.Element {
           <div className="page-content__title-wrapper">
             <h1 className="title title--size-m page-content__title">Мои бронирования</h1>
           </div>
-          {myQuestsData.length ?<QuestList myQuestsData={myQuestsData}/> : 'Пока ничего нет...'}
+          {myQuestsData.length ? <QuestList myQuestsData={myQuestsData}/> : 'Пока ничего нет...'}
         </div>
       </main>
       <Footer />

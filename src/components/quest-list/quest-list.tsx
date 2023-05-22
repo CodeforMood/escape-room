@@ -9,19 +9,19 @@ type QuestListProps = {
 
 export default function QuestList({questsData, myQuestsData}: QuestListProps): JSX.Element {
   if (questsData) {
-  return (
-    <div className="cards-grid">
-      {questsData.map((questData) => <QuestCard questData={questData} key={questData.id} />)}
-    </div>
-  );
-}
+    return (
+      <div className="cards-grid">
+        {questsData.map((questData) => <QuestCard questData={questData} key={questData.id} />)}
+      </div>
+    );
+  }
 
-if (myQuestsData) {
-  return (
-    <div className="cards-grid">
-      {myQuestsData.map((myQuestData) => <QuestCard myQuestData={myQuestData} key={myQuestData.id} />)}
-    </div>
-  );
-}
-return (<></>)
+  if (myQuestsData) {
+    return (
+      <div className="cards-grid">
+        {myQuestsData.map((myQuestData) => <QuestCard myQuestData={myQuestData} key={myQuestData.id} />)}
+      </div>
+    );
+  }
+  return (<></>);
 }

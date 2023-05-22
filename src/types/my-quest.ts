@@ -9,7 +9,7 @@ export type MyQuest = {
   location: {
   address: string;
   coords: number[];
-  }
+  };
   quest: {
     id: string;
     title: string;
@@ -18,5 +18,5 @@ export type MyQuest = {
     level: string;
     type: string;
     peopleMinMax: number[];
-  }
+  };
 }
