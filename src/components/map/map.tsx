@@ -27,7 +27,6 @@ type MapProps = {
 
 
 export default function Map({bookingQuestData}: MapProps): JSX.Element {
-
   const currentBookingQuestId = useAppSelector(getCurrentBookingQuestId);
   const mapRef = useRef(null);
   const map = useMap(mapRef, bookingQuestData[0].location.coords);
@@ -42,7 +41,7 @@ export default function Map({bookingQuestData}: MapProps): JSX.Element {
         });
 
         marker.setIcon(
-          currentBookingQuestId !== undefined && bookingQuest.location.address === currentBookingQuestId
+          currentBookingQuestId !== undefined && bookingQuest.id === currentBookingQuestId
             ? currentCustomIcon
             : defaultCustomIcon
         )
@@ -52,7 +51,7 @@ export default function Map({bookingQuestData}: MapProps): JSX.Element {
       });
     }
   }, [map, bookingQuestData, currentBookingQuestId, dispatch]);
-
+  
   return (
     <section className="map__container" ref={mapRef}></section>
   );

@@ -30,6 +30,8 @@ export enum SlicesName {
   BookingQuestData = 'BOOKING_QUEST_DATA',
 }
 
+export const DEFAULT_COORDINATES = [59.968137, 30.316272];
+
 export const URL_MARKER_DEFAULT = 'img/svg/pin-default.svg';
 
 export const URL_MARKER_ACTIVE = 'img/svg/pin-active.svg';

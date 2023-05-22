@@ -3,7 +3,7 @@ import { Map, TileLayer } from 'leaflet';
 
 export default function useMap(
   mapRef: MutableRefObject<HTMLElement | null>,
-  questDataLocation: [number, number],
+  locationData: number[],
 ): Map | null {
   const [map, setMap] = useState<Map | null>(null);
   const isRenderedRef = useRef<boolean>(false);
@@ -12,9 +12,10 @@ export default function useMap(
     if (mapRef.current !== null && !isRenderedRef.current) {
       const instance = new Map(mapRef.current, {
         center: {
-          lat: questDataLocation[0],
-          lng: questDataLocation[1],
+          lat: locationData[0],
+          lng: locationData[1],
         },
+        zoom: 10,
       });
 
       const layer = new TileLayer(
@@ -30,7 +31,7 @@ export default function useMap(
       setMap(instance);
       isRenderedRef.current = true;
     }
-  }, [mapRef, questDataLocation]);
+  }, [mapRef, locationData]);
 
   return map;
 }

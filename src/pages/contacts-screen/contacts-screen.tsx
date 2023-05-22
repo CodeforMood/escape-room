@@ -1,3 +1,4 @@
+import ContactsMap from '../../components/contacts-map/contacts-map';
 import Footer from '../../components/footer/footer';
 import Header from '../../components/header/header';
 
@@ -44,7 +45,7 @@ export default function ContactsScreen (): JSX.Element {
             </dl>
             <div className="contacts__map">
               <div className="map">
-                <div className="map__container"></div>
+                <ContactsMap />
               </div>
             </div>
           </div>

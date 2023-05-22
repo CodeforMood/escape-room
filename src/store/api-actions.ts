@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 import { APIRoute, AppRoute } from '../const';
-import { useAppSelector } from '../hooks';
 import { dropToken, saveToken } from '../services/token';
 import { AuthData } from '../types/auth-data';
 import { BookingQuestData } from '../types/booking-quest-data';
@@ -11,7 +10,6 @@ import { AppDispatch } from '../types/state';
 import { UserData } from '../types/user-data';
 import { redirectToRoute } from './action';
 import { setCurrentBookingQuestId } from './booking-quest-data/booking-quest-data';
-import { getCurrentBookingQuestId } from './booking-quest-data/selectors';
 
 export const checkAuthAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
@@ -64,7 +62,7 @@ export const fetchBookingQuestDataAction = createAsyncThunk<BookingQuestData[], 
   async(id, {dispatch, extra: api}) => {
     const {data} = await api.get<BookingQuestData[]>(APIRoute.Quest + id + APIRoute.Booking);
     dispatch(setCurrentBookingQuestId(data[0].id));
-    console.log(useAppSelector(getCurrentBookingQuestId))
+
     return data;
   },
 );
