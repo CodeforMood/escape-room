@@ -1,6 +1,7 @@
 import { store } from '../store';
 import { BookingQuestData } from './booking-quest-data';
 import { CurrentQuest } from './current-quest';
+import { MyQuest } from './my-quest';
 import { Quest } from './quest';
 
 export type AuthorizationUserProcess = {
@@ -15,6 +16,11 @@ export type QuestsData = {
   currentLevelFilter: string;
 }
 
+export type MyQuestsData = {
+  isMyQuestsDataLoading: boolean;
+  myQuests: MyQuest[];
+}
+
 export type CurrentQuestData = {
   quest: CurrentQuest | null;
   isQuestDataLoading: boolean;
@@ -23,7 +29,7 @@ export type CurrentQuestData = {
 export type BookingData = {
   bookingQuestData: BookingQuestData[];
   isBookingQuestDataLoading: boolean;
-  currentBookingQuestId: string | null,
+  currentBookingQuestId: string | null;
 }
 
 export type State = ReturnType<typeof store.getState>;

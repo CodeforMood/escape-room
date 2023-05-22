@@ -28,6 +28,7 @@ export enum SlicesName {
   QuestsData = 'QUESTS_DATA',
   CurrentQuestData = 'CURRENT_QUEST_DATA',
   BookingQuestData = 'BOOKING_QUEST_DATA',
+  MyQuestsData = 'MY_QUESTS_DATA',
 }
 
 export const DEFAULT_COORDINATES = [59.968137, 30.316272];

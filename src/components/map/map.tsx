@@ -51,7 +51,7 @@ export default function Map({bookingQuestData}: MapProps): JSX.Element {
       });
     }
   }, [map, bookingQuestData, currentBookingQuestId, dispatch]);
-  
+
   return (
     <section className="map__container" ref={mapRef}></section>
   );

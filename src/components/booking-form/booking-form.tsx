@@ -1,74 +1,100 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { sendBookingDataAction } from '../../store/api-actions';
+import { getCurrentQuestData } from '../../store/current-quest-data/selectors';
+import { BookingQuestData } from '../../types/booking-quest-data';
 
-export default function BookingForm () {
+type BookingFormProps = {
+  bookingQuestData: BookingQuestData;
+}
+
+export default function BookingForm ({bookingQuestData}: BookingFormProps) {
+  const currentQuestData = useAppSelector(getCurrentQuestData);
+  const dispatch = useAppDispatch();
   const [bookingData, setBookingData] = useState({
     date: '',
     time: '',
     contactPerson: '',
     phone: '',
     withChildren: false,
-    peopleCount: 3,
-    placeId: '',
+    peopleCount: 0,
+    placeId: bookingQuestData.id,
   });
+
+  const resetFormData = () => {
+    setBookingData({
+      date: '',
+      time: '',
+      contactPerson: '',
+      phone: '',
+      withChildren: false,
+      peopleCount: 0,
+      placeId: bookingQuestData.id,
+    });
+  };
 
   const fieldChangeHandle = (evt: React.ChangeEvent<HTMLInputElement>): void => {
     const{name, value} = evt.target;
-    if (evt.target.name === 'date'){
+    if (name === 'date') {
       setBookingData({
         ...bookingData,
         date: value.split(' ')[0],
         time: value.split(' ')[1],
       });
+      return;
     }
+
+    if (name === 'withChildren') {
+      setBookingData({
+        ...bookingData,
+        withChildren: evt.target.checked,
+      });
+      return;
+    }
+
+    if (name === 'peopleCount') {
+      setBookingData({
+        ...bookingData,
+        peopleCount: Number(value),
+      });
+      return;
+    }
+
     setBookingData({
       ...bookingData,
       [name]: value,
     });
   };
 
+  const submitHandle = (evt: FormEvent<HTMLFormElement>): void => {
+    evt.preventDefault();
+
+    dispatch(sendBookingDataAction({id: currentQuestData?.id || '', resetFormData, formData: bookingData}));
+  };
+
   return (
-    <form className="booking-form" action="https://echo.htmlacademy.ru/" method="post">
+    <form className="booking-form" action="#" method="post" onSubmit={submitHandle}>
       <fieldset className="booking-form__section">
         <legend className="visually-hidden">Выбор даты и времени</legend>
         <fieldset className="booking-form__date-section">
           <legend className="booking-form__date-title">Сегодня</legend>
           <div className="booking-form__date-inner-wrapper">
-            <label className="custom-radio booking-form__date">
-              <input type="radio" id="today9h45m" name="date" required value="today 9:45" onChange={fieldChangeHandle} /><span className="custom-radio__label">9:45</span>
-            </label>
-            <label className="custom-radio booking-form__date">
-              <input type="radio" id="today15h00m" name="date" required value="today 15:00" onChange={fieldChangeHandle} /><span className="custom-radio__label">15:00</span>
-            </label>
-            <label className="custom-radio booking-form__date">
-              <input type="radio" id="today17h30m" name="date" required value="today 17:30" onChange={fieldChangeHandle} /><span className="custom-radio__label">17:30</span>
-            </label>
-            <label className="custom-radio booking-form__date">
-              <input type="radio" id="today19h30m" name="date" required value="today 19:30" disabled onChange={fieldChangeHandle}/><span className="custom-radio__label">19:30</span>
-            </label>
-            <label className="custom-radio booking-form__date">
-              <input type="radio" id="today21h30m" name="date" required value="today 21:30" onChange={fieldChangeHandle}/><span className="custom-radio__label">21:30</span>
-            </label>
+            {bookingQuestData.slots.today.map((slot) =>(
+              <label className="custom-radio booking-form__date" key={slot.time}>
+                <input type="radio" id={`today${slot.time}`} name="date" required value={`today ${slot.time}`} disabled={!slot.isAvailable} onChange={fieldChangeHandle} /><span className="custom-radio__label">{slot.time}</span>
+              </label>
+            ))}
           </div>
         </fieldset>
         <fieldset className="booking-form__date-section">
           <legend className="booking-form__date-title">Завтра</legend>
           <div className="booking-form__date-inner-wrapper">
-            <label className="custom-radio booking-form__date">
-              <input type="radio" id="tomorrow11h00m" name="date" required value="tomorrow 11:00" onChange={fieldChangeHandle} /><span className="custom-radio__label">11:00</span>
-            </label>
-            <label className="custom-radio booking-form__date">
-              <input type="radio" id="tomorrow15h00m" name="date" required value="tomorrow 15:00" disabled onChange={fieldChangeHandle} /><span className="custom-radio__label">15:00</span>
-            </label>
-            <label className="custom-radio booking-form__date">
-              <input type="radio" id="tomorrow17h30m" name="date" required value="tomorrow 17:30" disabled onChange={fieldChangeHandle} /><span className="custom-radio__label">17:30</span>
-            </label>
-            <label className="custom-radio booking-form__date">
-              <input type="radio" id="tomorrow19h45m" name="date" required value="tomorrow 19:45" onChange={fieldChangeHandle} /><span className="custom-radio__label">19:45</span>
-            </label>
-            <label className="custom-radio booking-form__date">
-              <input type="radio" id="tomorrow21h30m" name="date" required value="tomorrow 21:30" onChange={fieldChangeHandle} /><span className="custom-radio__label">21:30</span>
-            </label>
+            {bookingQuestData.slots.tomorrow.map((slot) =>(
+              <label className="custom-radio booking-form__date" key={slot.time}>
+                <input type="radio" id={`tomorrow${slot.time}`} name="date" required value={`tomorrow ${slot.time}`} disabled={!slot.isAvailable} onChange={fieldChangeHandle} /><span className="custom-radio__label">{slot.time}</span>
+              </label>
+            ))}
           </div>
         </fieldset>
       </fieldset>

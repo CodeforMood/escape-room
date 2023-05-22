@@ -5,8 +5,10 @@ import { dropToken, saveToken } from '../services/token';
 import { AuthData } from '../types/auth-data';
 import { BookingQuestData } from '../types/booking-quest-data';
 import { CurrentQuest } from '../types/current-quest';
+import { FormBookingData } from '../types/form-booking-data';
+import { MyQuest } from '../types/my-quest';
 import { Quest } from '../types/quest';
-import { AppDispatch } from '../types/state';
+import { AppDispatch} from '../types/state';
 import { UserData } from '../types/user-data';
 import { redirectToRoute } from './action';
 import { setCurrentBookingQuestId } from './booking-quest-data/booking-quest-data';
@@ -77,3 +79,31 @@ export const fetchQuestsAction = createAsyncThunk<Quest[], undefined, {
     return data;
   },
 );
+
+export const fetchMyQuestsAction = createAsyncThunk<MyQuest[], undefined, {
+  extra: AxiosInstance;
+}>(
+  'fetchMyQuests',
+  async(_arg, {extra: api}) => {
+    const {data} = await api.get<MyQuest[]>(APIRoute.Reservation);
+
+    return data;
+  },
+);
+
+export const sendBookingDataAction = createAsyncThunk<void, {
+  id: string;
+  formData: FormBookingData;
+  resetFormData: () => void;
+    },
+  {
+    dispatch: AppDispatch;
+    extra: AxiosInstance;
+  }>(
+    'sendBookingData',
+    async({id, resetFormData, formData}, {extra: api, dispatch}) => {
+      await api.post(APIRoute.Quest + id + APIRoute.Booking, formData);
+      resetFormData();
+      dispatch(redirectToRoute(AppRoute.MyQuests));
+    }
+    );

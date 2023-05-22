@@ -12,21 +12,21 @@ const currentCustomIcon = new Icon({
 });
 
 export default function ContactsMap(): JSX.Element {
-  
+
   const mapRef = useRef(null);
   const map = useMap(mapRef, DEFAULT_COORDINATES);
 
   useEffect(() => {
     if (map) {
-        const marker = new Marker({
-          lat: DEFAULT_COORDINATES[0],
-          lng: DEFAULT_COORDINATES[1],
-        });
+      const marker = new Marker({
+        lat: DEFAULT_COORDINATES[0],
+        lng: DEFAULT_COORDINATES[1],
+      });
 
-        marker.setIcon(currentCustomIcon).addTo(map);
+      marker.setIcon(currentCustomIcon).addTo(map);
     }
   }, [map]);
-  
+
   return (
     <section className="map__container" ref={mapRef}></section>
   );
