@@ -82,12 +82,25 @@ export const fetchQuestsAction = createAsyncThunk<Quest[], undefined, {
 
 export const fetchMyQuestsAction = createAsyncThunk<MyQuest[], undefined, {
   extra: AxiosInstance;
+  dispatch: AppDispatch;
 }>(
   'fetchMyQuests',
-  async(_arg, {extra: api}) => {
+  async(_arg, {extra: api, dispatch}) => {
     const {data} = await api.get<MyQuest[]>(APIRoute.Reservation);
+    dispatch(redirectToRoute(AppRoute.MyQuests));
 
     return data;
+  },
+);
+
+export const deleteFromMyQuestsAction = createAsyncThunk<void, string, {
+  extra: AxiosInstance;
+  dispatch: AppDispatch;
+}>(
+  'deleteFromMyQuests',
+  async(id, {extra: api, dispatch}) => {
+    await api.delete(APIRoute.Reservation + id);
+    dispatch(fetchMyQuestsAction());
   },
 );
 
@@ -105,5 +118,6 @@ export const sendBookingDataAction = createAsyncThunk<void, {
       await api.post(APIRoute.Quest + id + APIRoute.Booking, formData);
       resetFormData();
       dispatch(redirectToRoute(AppRoute.MyQuests));
+      dispatch(fetchMyQuestsAction());
     }
     );

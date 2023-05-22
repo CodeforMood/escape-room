@@ -7,7 +7,7 @@ type QuestListProps = {
   myQuestsData?: MyQuest[];
 }
 
-export default function QuestList({questsData, myQuestsData}: QuestListProps): JSX.Element {
+export default function QuestList({questsData, myQuestsData}: QuestListProps): JSX.Element | null {
   if (questsData) {
     return (
       <div className="cards-grid">
@@ -23,5 +23,5 @@ export default function QuestList({questsData, myQuestsData}: QuestListProps): J
       </div>
     );
   }
-  return (<></>);
+  return null;
 }

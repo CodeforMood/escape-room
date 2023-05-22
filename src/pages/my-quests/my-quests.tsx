@@ -6,6 +6,7 @@ import { getMyQuestsData } from '../../store/my-quests-data/selectors';
 
 export default function MyQuestsScreen (): JSX.Element {
   const myQuestsData = useAppSelector(getMyQuestsData);
+
   return (
     <div className="wrapper">
       <Header />

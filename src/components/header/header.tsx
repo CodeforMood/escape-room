@@ -31,7 +31,7 @@ export default function Header({isLoginScreen}: HeaderProps): JSX.Element {
             {
               authorizationStatus === AuthorizationStatus.Auth &&
               <li className="main-nav__item">
-                <Link className="link" onClick={() => {dispatch(fetchMyQuestsAction());}} to={AppRoute.MyQuests}>Мои бронирования</Link>
+                <Link className="link" onClick={() => {dispatch(fetchMyQuestsAction());}} to="#">Мои бронирования</Link>
               </li>
             }
           </ul>

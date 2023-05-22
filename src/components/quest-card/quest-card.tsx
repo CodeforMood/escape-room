@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { useAppDispatch } from '../../hooks';
 import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
-import { fetchCurrentQuestDataAction } from '../../store/api-actions';
+import { deleteFromMyQuestsAction, fetchCurrentQuestDataAction } from '../../store/api-actions';
 import { MyQuest } from '../../types/my-quest';
 import { Quest } from '../../types/quest';
 
@@ -67,7 +67,7 @@ export default function QuestCard({questData, myQuestData}: QuestCardProps): JSX
               </svg>{level}
             </li>
           </ul>
-          <button className="btn btn--accent btn--secondary quest-card__btn" type="button">Отменить</button>
+          <button className="btn btn--accent btn--secondary quest-card__btn" type="button" onClick={() => {dispatch(deleteFromMyQuestsAction(id));}}>Отменить</button>
         </div>
       </div>
     );

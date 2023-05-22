@@ -20,7 +20,7 @@ export enum APIRoute {
   Login = '/login',
   Logout = '/logout',
   Booking = '/booking',
-  Reservation = '/reservation'
+  Reservation = '/reservation/'
 }
 
 export enum SlicesName {
@@ -36,3 +36,5 @@ export const DEFAULT_COORDINATES = [59.968137, 30.316272];
 export const URL_MARKER_DEFAULT = 'img/svg/pin-default.svg';
 
 export const URL_MARKER_ACTIVE = 'img/svg/pin-active.svg';
+
+export const SPINNER_COLOR = '#7777FF';

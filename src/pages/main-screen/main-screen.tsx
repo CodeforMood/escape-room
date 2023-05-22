@@ -3,10 +3,10 @@ import Footer from '../../components/footer/footer';
 import Header from '../../components/header/header';
 import QuestList from '../../components/quest-list/quest-list';
 import { useAppSelector } from '../../hooks';
-import { getQuestsData } from '../../store/quests-data/selectors';
+import { getFilteredQuests} from '../../store/quests-data/selectors';
 
 export default function MainScreen (): JSX.Element {
-  const questsData = useAppSelector(getQuestsData);
+  const questsData = useAppSelector(getFilteredQuests);
   return (
     <div className="wrapper">
       <Header />

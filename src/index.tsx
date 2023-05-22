@@ -6,9 +6,12 @@ import App from './components/app/app';
 import { store } from './store';
 import { checkAuthAction, fetchQuestsAction } from './store/api-actions';
 import 'react-toastify/dist/ReactToastify.css';
+import { setLevelFilter, setTypeFilter } from './store/quests-data/quests-data';
 
 store.dispatch(fetchQuestsAction());
 store.dispatch(checkAuthAction());
+store.dispatch(setTypeFilter('all'));
+store.dispatch(setLevelFilter('any'));
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
