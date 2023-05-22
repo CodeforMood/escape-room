@@ -110,7 +110,7 @@ export default function BookingForm ({bookingQuestData}: BookingFormProps) {
         </div>
         <div className="custom-input booking-form__input">
           <label className="custom-input__label" htmlFor="peopleCount">Количество участников</label>
-          <input type="number" id="person" name="peopleCount" placeholder="Количество участников" required onChange={fieldChangeHandle} />
+          <input type="number" id="person" name="peopleCount" placeholder="Количество участников" min={currentQuestData?.peopleMinMax[0] || 1} max={currentQuestData?.peopleMinMax[1] || 6} required onChange={fieldChangeHandle} />
         </div>
         <label className="custom-checkbox booking-form__checkbox booking-form__checkbox--children">
           <input type="checkbox" id="children" name="withChildren" onChange={fieldChangeHandle}/>

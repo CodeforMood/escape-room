@@ -30,11 +30,11 @@ function App(): JSX.Element {
   const isMyQuestsDataLoading = useAppSelector(getMyQuestsDataLoadingStatus);
   const isCurrentQuestDataLoading = useAppSelector(getCurrentQuestDataLoadingStatus);
 
-    if (isQuestDataLoading ||isBookingQuestDataLoading || isMyQuestsDataLoading || isCurrentQuestDataLoading) {
+  if (isQuestDataLoading || isBookingQuestDataLoading || isMyQuestsDataLoading || isCurrentQuestDataLoading) {
     return (
       <ClipLoader
         color={SPINNER_COLOR}
-        loading={isQuestDataLoading}
+        loading={isQuestDataLoading || isBookingQuestDataLoading || isMyQuestsDataLoading || isCurrentQuestDataLoading}
         cssOverride={override}
         size={150}
         aria-label="Loading Spinner"
